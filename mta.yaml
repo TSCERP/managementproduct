@@ -1,28 +1,33 @@
-ID: managementproduct
+ID: managementproduct-approuter
 _schema-version: 3.2.0
 version: 0.0.1
 parameters:
-  enable-parallel-deployments: true
+    enable-parallel-deployments: true
 modules:
-  - name: managementproduct
-    type: nodejs
-    path: approuter
-    parameters:
-      disk-quota: 512M
-      memory: 512M
-    requires:
-      - name: managementproduct_destination
-    build-parameters:
-      builder: custom
-      commands:
-        - npm install
-        - npm run build:ui --prefix ..
+    - name: managementproduct_approuter
+      type: approuter.nodejs
+      path: ./approuter
+      requires:
+          - name: html5-destination # found in resources section of this file
+      parameters:
+          disk-quota: 158M
+          memory: 158M
+    - name: managementproduct
+      type: html5
+      path: ./
+      build-parameters:
+          builder: custom
+          commands:
+              - npm install
+              - npm run build:ui
+          supported-platforms: []
+          build-result: dist
 resources:
-  - name: managementproduct_destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service-plan: lite
-      service: destination
-      config:
-        HTML5Runtime_enabled: true
-        version: 1.0.0
+    - name: html5-destination
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-plan: lite
+          service: destination
+          config:
+              HTML5Runtime_enabled: true
+              version: 1.0.0
