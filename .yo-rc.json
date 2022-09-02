@@ -1,0 +1,24 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "managementproduct",
+    "namespaceUI5": "sap.ui.demo",
+    "enableFPM": false,
+    "platform": "Application Router @ Cloud Foundry",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (SAPUI5)",
+    "newdir": true,
+    "codeassist": true,
+    "initrepo": true,
+    "namespaceURI": "sap/ui/demo",
+    "opa5pos": [
+      "Main"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}
